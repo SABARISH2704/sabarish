@@ -1,0 +1,28 @@
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin-bottom: 25%;
+  margin-top: 400px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.get-started-container {
+  background-image: url('src/assets/main_image.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+}

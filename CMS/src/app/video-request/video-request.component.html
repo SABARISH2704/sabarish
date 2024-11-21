@@ -1,0 +1,12 @@
+<div class="get-started-container"></div>
+<div class="video-request-container" *ngIf="dataItems">
+    <h2>Video Request</h2>
+    <div class="video-info">
+        <p><strong>Details:</strong> {{ dataItems.detail }}</p>
+        <p><strong>Time stamp:</strong> {{ dataItems.timestamp }}</p>
+        <p><strong>Notification_ID:</strong> {{dataItems.notification_id}}</p>
+    </div>
+    <button class="request-button" (click)="onSubmit()">Request Video</button>
+    <div #videoContainer></div>
+</div>
+<button class="request-button" routerLink="/historyPage">Back</button>

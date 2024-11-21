@@ -1,0 +1,57 @@
+<div class="get-started-container"></div>
+<form [formGroup]="dataForm">
+  <h1 style="text-align: center;">Cabin Monitoring System</h1>
+  <label for="vin">Select Vin.No:</label>
+  <select formControlName="vin" id="vin" [attr.disabled]="isLoadingVins ? '' : null">
+    <option value="">-- Select Vehicle --</option>
+    <option *ngFor="let vin of vinList" [value]="vin">
+      {{vin}}
+    </option>
+  </select>
+  <div *ngIf="isLoadingVins" class="loading-text">Loading VINs...</div>
+  <div *ngIf="vinError" class="error-text">{{vinError}}</div>
+
+  <label for="startTime">Start Time:</label>
+  <input type="datetime-local" formControlName="startTime" id="startTime" />
+
+  <label for="endTime">End Time:</label>
+  <input type="datetime-local" formControlName="endTime" id="endTime" />
+
+  <button type="submit" (click)="fetchData()">Fetch Notification</button>
+  <div *ngIf="isLoading" class="loader">Loading....</div>
+  <div *ngIf="errorMessage" style="color: red; margin-top: 10px;">
+    {{ errorMessage }}
+  </div>
+</form>
+
+<div class="table-container" *ngIf="dataItems.length > 0">
+  <table>
+    <thead>
+      <tr>
+        <th>Message</th>
+        <!-- <th>Detail</th> -->
+        <th>Action</th>
+        <!-- <th>Timestamp</th> -->
+        <!-- <th>Notification_ID</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of dataItems">
+        <td>{{ item.message }}</td>
+        <!-- <td>{{ item.detail }}</td> -->
+        <!-- <td>{{ item.notification_id }}</td> -->
+        <td>
+          <!-- <button (click)="requestVideo(item.notification_id)">Request Video</button> -->
+          <button (click)="redirectToVideo()">Request Video And More Details</button>
+        </td>
+        <!-- <td>{{ item.timestamp }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button class="request-button" routerLink="/icons-menu">Back</button>
+
+<!-- <div class="notification" *ngIf="modalMessage && !showForm">
+    <span class="notification-message" (click)="redirectToVideo()">{{ modalMessage }}</span>
+    <button class="close-button" (click)="close()">✖</button>
+  </div> -->
